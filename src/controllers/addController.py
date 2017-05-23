@@ -20,11 +20,13 @@ def add(request, response):
     # return txt.format(a,b,r)
 
     # Model : context definition
+    """
     context = {
         'a' : a,
         'b' : b,
         'r' : r}
-    
+    """
+    context = dict(a = a, b = b, r = r)
     
     # View : the '.tpl' file
     return template('./templates/add.tpl', context)
