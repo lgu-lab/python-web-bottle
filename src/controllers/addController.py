@@ -1,3 +1,4 @@
+from bottle import template
 from services import addService
 
 '''
@@ -9,7 +10,21 @@ def add(request, response):
     
     r = addService.add(a, b);
     
-    txt = 'a = {}, b = {} : result = {}'
-    txt.format(a,b,r)
+    # txt = 'a = {}, b = {} : result = {}'
+    # txt.format(a,b,r)
+    
+    # context = {'title': "Max est le plus beau", 'r' : r} 
+    # return context 
+
     # response.content_type = 'text/html; charset=latin9'
-    return txt.format(a,b,r)
+    # return txt.format(a,b,r)
+
+    # Model : context definition
+    context = {
+        'a' : a,
+        'b' : b,
+        'r' : r}
+    
+    
+    # View : the '.tpl' file
+    return template('./templates/add.tpl', context)
